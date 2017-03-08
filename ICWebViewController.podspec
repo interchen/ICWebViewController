@@ -2,7 +2,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "ICWebViewController"
-  s.version      = "0.0.1"
+  s.version      = "0.0.2"
   s.summary      = "A simple UIViewController contains a WKWebView"
   s.description  = 'Support show title of webview and progress of loading'
   
