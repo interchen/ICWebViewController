@@ -9,14 +9,14 @@
 import UIKit
 import WebKit
 
-class ICWebViewController: UIViewController {
+open class ICWebViewController: UIViewController {
     
     let webView = WKWebView(frame: .zero, configuration: WKWebViewConfiguration())
     let progressView = UIProgressView()
-    var url: URL!
+    open var url: URL?
     
     // MARK: Life cycle
-    convenience init(_ url: URL) {
+    public convenience init(_ url: URL) {
         self.init()
         self.url = url
     }
@@ -28,7 +28,7 @@ class ICWebViewController: UIViewController {
         }
     }
     
-    override func viewDidLoad() {
+    override open func viewDidLoad() {
         super.viewDidLoad()
         
         initUI()
@@ -39,13 +39,13 @@ class ICWebViewController: UIViewController {
         self.loadRequest()
     }
     
-    override func viewDidLayoutSubviews() {
+    override open func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
         self.progressView.frame = CGRect(x: 0, y: 0 - self.webView.scrollView.bounds.origin.y, width: self.webView.bounds.size.width, height: 2.0)
     }
     
-    override func didReceiveMemoryWarning() {
+    override open func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
@@ -73,7 +73,7 @@ class ICWebViewController: UIViewController {
         self.progressView.progress = 0.1 // to fix short time blank when view did load
     }
     
-    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+    override open func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         if let keyPath = keyPath {
             switch keyPath {
             case "estimatedProgress":
@@ -106,13 +106,15 @@ class ICWebViewController: UIViewController {
     }
     
     // MARK: - private
-    func loadRequest() {
-        let request = NSMutableURLRequest(url: self.url, cachePolicy:.useProtocolCachePolicy, timeoutInterval: 86400)
-        
-        // add request cookie here
-//        request.addValue("key=value;", forHTTPHeaderField: "Cookie")
-        
-        webView.load(request as URLRequest)
+    open func loadRequest() {
+        if let url = self.url {
+            let request = NSMutableURLRequest(url: url, cachePolicy:.useProtocolCachePolicy, timeoutInterval: 86400)
+            
+            // add request cookie here
+            //            request.addValue("key=value;", forHTTPHeaderField: "Cookie")
+            
+            webView.load(request as URLRequest)
+        }
     }
     
     func delay(_ delay:Double? = 1.0, closure:@escaping ()->Void) {

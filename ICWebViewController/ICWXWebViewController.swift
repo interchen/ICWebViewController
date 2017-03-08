@@ -9,8 +9,8 @@
 import UIKit
 import WebKit
 
-class ICWXWebViewController: ICWebViewController, WKNavigationDelegate, UIGestureRecognizerDelegate {
-
+open class ICWXWebViewController: ICWebViewController, WKNavigationDelegate, UIGestureRecognizerDelegate {
+    
     var backButtonTitle: String!
     var closeButtonTitle: String!
     
@@ -22,23 +22,23 @@ class ICWXWebViewController: ICWebViewController, WKNavigationDelegate, UIGestur
         self.webView.navigationDelegate = nil
     }
     
-    convenience init(_ url: URL) {
+    public convenience init(_ url: URL) {
         self.init()
         self.url = url
         self.backButtonTitle = "返回"
         self.closeButtonTitle = "关闭"
     }
     
-    convenience init(_ url: URL, backButtonTitle: String?, closeButtonTitle: String?) {
+    public convenience init(_ url: URL, backButtonTitle: String?, closeButtonTitle: String?) {
         self.init()
         self.url = url
         self.backButtonTitle = backButtonTitle ?? "返回"
         self.closeButtonTitle = closeButtonTitle ?? "关闭"
     }
     
-    override func viewDidLoad() {
+    override open func viewDidLoad() {
         super.viewDidLoad()
-
+        
         self.webView.navigationDelegate = self
         self.setupBarButtons()
         
@@ -51,18 +51,18 @@ class ICWXWebViewController: ICWebViewController, WKNavigationDelegate, UIGestur
     }
     
     weak var originalGestureDelegate: UIGestureRecognizerDelegate?
-    override func viewWillAppear(_ animated: Bool) {
+    override open func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.originalGestureDelegate = self.navigationController?.interactivePopGestureRecognizer?.delegate
         self.navigationController?.interactivePopGestureRecognizer?.delegate = self
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
+    override open func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.navigationController?.interactivePopGestureRecognizer?.delegate = self.originalGestureDelegate
     }
-
-    override func didReceiveMemoryWarning() {
+    
+    override open func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
@@ -80,12 +80,13 @@ class ICWXWebViewController: ICWebViewController, WKNavigationDelegate, UIGestur
         closeButton.contentEdgeInsets = UIEdgeInsetsMake(1, -10, 0, 0)
         self.closeBarButton = UIBarButtonItem(customView: closeButton)
         
+        let backImage = UIImage(named: "icon_back", in: Bundle.init(for: ICWXWebViewController.self), compatibleWith: nil)
         let backButton = UIButton(type: .system)
         backButton.setTitle(self.backButtonTitle, for: .normal)
         backButton.setTitleColor(self.navigationController?.navigationBar.tintColor, for: .normal)
         backButton.tintColor = self.navigationController?.navigationBar.tintColor
-        backButton.setImage(UIImage(named: "icon_back"), for: .normal)
-        backButton.setImage(UIImage(named: "icon_back"), for: .highlighted)
+        backButton.setImage(backImage, for: .normal)
+        backButton.setImage(backImage, for: .highlighted)
         backButton.titleLabel?.font = UIFont.systemFont(ofSize: 15)
         backButton.addTarget(self, action: #selector(handleBack), for: .touchUpInside)
         backButton.sizeToFit()
@@ -116,13 +117,13 @@ class ICWXWebViewController: ICWebViewController, WKNavigationDelegate, UIGestur
     
     // MARK: - WKNavigationDelegate
     
-    func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
+    open func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
         
         decisionHandler(.allow)
         updateBackButtons(navigationAction)
     }
     
-    func updateBackButtons(_ navigationAction: WKNavigationAction) {
+    open func updateBackButtons(_ navigationAction: WKNavigationAction) {
         switch navigationAction.navigationType {
         case .backForward:
             if isPresent, !self.webView.canGoBack {
@@ -140,11 +141,11 @@ class ICWXWebViewController: ICWebViewController, WKNavigationDelegate, UIGestur
     
     // MARK: - UIGestureRecognizerDelegate
     
-    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldBeRequiredToFailBy otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+    open func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldBeRequiredToFailBy otherGestureRecognizer: UIGestureRecognizer) -> Bool {
         if gestureRecognizer is UIScreenEdgePanGestureRecognizer, !self.webView.canGoBack {
             return true
         }
         return false
     }
-
+    
 }
