@@ -11,9 +11,9 @@ import WebKit
 
 class ICWebViewController: UIViewController {
     
-    open let webView = WKWebView(frame: .zero, configuration: WKWebViewConfiguration())
-    open let progressView = UIProgressView()
-    open var url: URL!
+    let webView = WKWebView(frame: .zero, configuration: WKWebViewConfiguration())
+    let progressView = UIProgressView()
+    var url: URL!
     
     // MARK: Life cycle
     convenience init(_ url: URL) {

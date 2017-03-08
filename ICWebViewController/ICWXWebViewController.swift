@@ -11,8 +11,8 @@ import WebKit
 
 class ICWXWebViewController: ICWebViewController, WKNavigationDelegate, UIGestureRecognizerDelegate {
 
-    open var backButtonTitle: String!
-    open var closeButtonTitle: String!
+    var backButtonTitle: String!
+    var closeButtonTitle: String!
     
     fileprivate var isPresent = false
     fileprivate var closeBarButton: UIBarButtonItem!
