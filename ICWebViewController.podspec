@@ -8,7 +8,7 @@ Pod::Spec.new do |s|
   
   s.homepage     = "https://github.com/interchen/ICWebViewController"
 
-  s.license      = 'MIT'
+  s.license      =  { :type => "MIT", :file => "LICENSE.md" }
 
   s.author             = { "Chen Yanjun" => "inter.chen@gmail.com" }
   s.social_media_url   = "https://twitter.com/azhunchen"
