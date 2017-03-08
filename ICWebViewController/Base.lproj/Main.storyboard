@@ -1,26 +1,84 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="uIl-Tm-b2j">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
+        <!--Navigation Controller-->
+        <scene sceneID="REk-bg-bEZ">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController id="uIl-Tm-b2j" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="8OD-B0-Acs">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="eXj-xE-FnB" kind="relationship" relationship="rootViewController" id="YqC-pe-iWO"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Neg-ib-FXm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1124" y="89"/>
+        </scene>
+        <!--Demo-->
+        <scene sceneID="YMX-po-u90">
+            <objects>
+                <viewController id="eXj-xE-FnB" customClass="DemoViewController" customModule="ICWebViewController" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
-                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                        <viewControllerLayoutGuide type="top" id="aGF-IJ-NYl"/>
+                        <viewControllerLayoutGuide type="bottom" id="LE1-tJ-HaZ"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                    <view key="view" contentMode="scaleToFill" id="6Av-rt-Ujs">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <subviews>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="86Q-dz-dhs">
+                                <rect key="frame" x="55" y="99" width="265" height="29"/>
+                                <segments>
+                                    <segment title="Plain WebView"/>
+                                    <segment title="Custom Left Button"/>
+                                </segments>
+                            </segmentedControl>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="r0l-Wv-rhr">
+                                <rect key="frame" x="126" y="167" width="123" height="29"/>
+                                <segments>
+                                    <segment title="Push"/>
+                                    <segment title="Present"/>
+                                </segments>
+                            </segmentedControl>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oSQ-Ci-88U">
+                                <rect key="frame" x="131" y="255" width="114" height="38"/>
+                                <inset key="contentEdgeInsets" minX="40" minY="10" maxX="40" maxY="10"/>
+                                <state key="normal" title="Start"/>
+                                <connections>
+                                    <action selector="handleStartButton:" destination="eXj-xE-FnB" eventType="touchUpInside" id="fRw-WI-jc5"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="r0l-Wv-rhr" firstAttribute="top" secondItem="86Q-dz-dhs" secondAttribute="bottom" constant="40" id="108-Q6-DtI"/>
+                            <constraint firstItem="r0l-Wv-rhr" firstAttribute="centerX" secondItem="6Av-rt-Ujs" secondAttribute="centerX" id="40J-Z9-a6K"/>
+                            <constraint firstItem="86Q-dz-dhs" firstAttribute="centerX" secondItem="6Av-rt-Ujs" secondAttribute="centerX" id="Gmc-Hd-2yW"/>
+                            <constraint firstItem="oSQ-Ci-88U" firstAttribute="centerX" secondItem="6Av-rt-Ujs" secondAttribute="centerX" id="kka-eB-gIB"/>
+                            <constraint firstItem="oSQ-Ci-88U" firstAttribute="top" secondItem="r0l-Wv-rhr" secondAttribute="bottom" constant="60" id="vat-G7-RlZ"/>
+                            <constraint firstItem="86Q-dz-dhs" firstAttribute="top" secondItem="aGF-IJ-NYl" secondAttribute="bottom" constant="35" id="vzY-ZR-CT6"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Demo" id="e4U-ts-Ass"/>
+                    <connections>
+                        <outlet property="controllerTypeSC" destination="86Q-dz-dhs" id="pCG-nQ-1R2"/>
+                        <outlet property="showTypeSC" destination="r0l-Wv-rhr" id="5ci-G7-Suq"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sdT-UJ-hAd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="-228" y="89"/>
         </scene>
     </scenes>
 </document>
