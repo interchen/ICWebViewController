@@ -1,6 +1,11 @@
 # ICWebViewController [中文介绍](https://github.com/interchen/ICWebViewController/blob/master/README_CN.md)
 
-A simple UIViewController contains a WKWebView and UIProgressView written by Swift 3.
+A simple UIViewController contains a WKWebView and UIProgressView written by Swift 3.  
+
+
+Maybe you'll say "Why don't you use SafariViewController".  
+Right! If you just want to display a webview.  
+But if you want to deal with cookie or some interact with javascript, you can try this lib.  
 
 ## Install
 `pod 'ICWebViewController'`  
