@@ -18,6 +18,14 @@ class DemoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        // Change progress tintColor
+        UIProgressView.appearance().tintColor = .red
+        
+        // Change navigation bar color
+        self.navigationController?.navigationBar.tintColor = .white
+        self.navigationController?.navigationBar.barTintColor = .lightGray
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.red]
     }
 
     override func didReceiveMemoryWarning() {
