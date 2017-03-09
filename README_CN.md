@@ -5,7 +5,7 @@
 使用 Swift 3 编写
 
 ## 安装
-`pod 'ICWebViewController'
+`pod 'ICWebViewController'`
 
 ## ICWebViewController
 - WKWebView
