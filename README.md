@@ -2,10 +2,10 @@
 
 A simple UIViewController contains a WKWebView and UIProgressView written by Swift 3.
 
-
+## Install
+`pod 'ICWebViewController'
 
 ## ICWebViewController
-
 - WKWebView
 - Use `document.title` as title of navigation bar
 - Show load progress
@@ -13,12 +13,7 @@ A simple UIViewController contains a WKWebView and UIProgressView written by Swi
 
 ![ICWebViewController](https://github.com/interchen/ICWebViewController/blob/master/ScreenShots/ICWebViewController.png)
 
-
-
-
-
 ## ICWXWebViewController
-
 - Base on `ICWebViewController`
 - Custom left bar buttons, provide a "back button" to go back and a "close  button" to dismiss viewController
 
